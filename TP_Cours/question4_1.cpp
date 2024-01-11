@@ -17,7 +17,7 @@ protected:
     std::string lieuNaissance;
     std::string numeroTelephone;
 public:
-    Personne() : nom(""), prenom(""), age(0), sexe(' '), lieuNaissance(""), numeroTelephone("") {
+    Personne() : nom(""), prenom(""), age(-1), sexe(' '), lieuNaissance(""), numeroTelephone("") {
         compteur++;
         std::cout << "Création d'une instance de Personne. Total: " << compteur << std::endl;
     }
@@ -32,7 +32,10 @@ public:
         compteur--;
         std::cout << "Destruction d'une instance de Personne. Restant: " << compteur << std::endl;
     }
-
+    void toString(){
+        std::cout << "Nom: " << nom << ", Prénom: " << prenom << ", Age: " << age << ", Sexe: " << sexe
+                  << ", Lieu de Naissance: " << lieuNaissance << ", Numéro de Téléphone: " << numeroTelephone << std::endl;
+    }
     void afficher() const {
         std::cout << "Nom: " << nom << ", Prénom: " << prenom << ", Age: " << age << ", Sexe: " << sexe
                   << ", Lieu de Naissance: " << lieuNaissance << ", Numéro de Téléphone: " << numeroTelephone << std::endl;
@@ -77,9 +80,10 @@ public:
         std::cout << nom << " est en train de dormir." << std::endl;
     }
 
-    std::string toString() {
-        std::cout << "Appel de toString de Personne" << std::endl;
-        return "Nom: " + nom + ", Prénom: " + prenom;
+    void toString() {
+        Personne::toString();
+        std::cout << "Université: " << universite << ", Faculté: " << faculte << ", Filière: " << filiere
+                  << ", Année d'étude: " << anneeEtude << ", Numéro matricule: " << numeroMatricule << ", Email: " << email << std::endl;
     }
     void afficher() {
         Personne::afficher();
@@ -196,7 +200,7 @@ int main() {
 
     // Utilisation de la méthode toString pour afficher l'étudiant
     Etudiant etudiant3("Baba", "Arafath", 20, 'F', "Parakou", "0987654321", "UAC", "FAST", "MIA", 3, "E654321", "Baba@gmail.com");
-    std::cout << etudiant3.toString() << std::endl;
+    etudiant3.toString();
 
     // Création du moniteur avec initialisation manuelle des vecteurs
     std::vector<std::string> specialites;
